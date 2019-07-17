@@ -1,0 +1,35 @@
+<div *ngIf="recipe._id !== ''">
+  <div class="d-inline-flex justify-content-center" style="width: 100vw">
+    <div *ngFor="let ingredient of recipe.ingredients; index as i;" [style.color]="getPageIndexColor(i)"
+         [style.text-decoration]="i === currentPos ? 'underline' : 'none'" class="p-2"
+         style="padding: 10px;">
+      {{i}}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="container-fluid">
+      <p class="font-weight-bold text-center" style="padding: 4px;">{{recipe.ingredients[currentPos]}}</p>
+    </div>
+    <div class="CContainer">
+      <div *ngFor="let suggest of recipe.fSuggestions[currentPos]">
+        <div (tap)="setMatch(suggest.sugId)" [ngClass]="getTileClass(suggest.sugId)" class="CTile">
+          <p style="text-align: center; font-size: 11px">{{suggest.sugText}}</p>
+        </div>
+      </div>
+      <div>
+        <div (tap)="manualSelected.emit(true)" class="CTile">
+          <p style="text-align: center;  font-size: 11px">
+            Select Manually
+          </p>
+        </div>
+      </div>
+      <div *ngIf="isManualMatch()" [ngClass]="getTileClass(getManualSuggest().sugId)"
+           class="CTile">
+        <p style="text-align: center;  font-size: 11px">
+          {{ getManualSuggest().sugText}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

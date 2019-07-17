@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="CFixedContainer">
+  <div class="Cmodal">
+    <p class="text-center">type a word or a comma separated word list</p>
+    <hr>
+    <div class="input-group mb-3">
+      <input (input)="changeInputEvent($event.target.value)" aria-describedby="basic-addon1" aria-label="word"
+             class="form-control"
+             placeholder=""
+             type="text">
+    </div>
+    <div class="CScrollWindow">
+      <div *ngFor="let suggestion of currentSuggestions; let i = index;">
+        <p (click)="selectWord(i)" [style.color]="selectedColor(suggestion.sugId)"
+           style="font-size: 11px">{{suggestion.sugText}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="CFlexContainer" style="float: bottom">
+    <button (tap)="close()" class="btn btn-outline-secondary CButtonSize"
+            type="button">back
+    </button>
+
+    <button (tap)="setError()" class="btn btn-outline-danger CButtonSize"
+            type="button">Not Found
+    </button>
+
+    <button (tap)="submit()" *ngIf="selectedWord.sugId !== ''" class="btn btn-outline-primary  CButtonSize"
+            type="button">select
+    </button>
+  </div>
+</div>

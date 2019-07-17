@@ -1,0 +1,64 @@
+p {
+  margin: 0px;
+}
+
+.CPageIndex {
+  margin: 12px;
+}
+
+.tile {
+  width: 50vw;
+  height: 50vw;
+}
+
+.CContainer {
+  position: relative;
+  margin: 0px;
+  width: 100%;
+  display: flex; /* or inline-flex */
+  flex-wrap: wrap;
+  flex-grow: 0;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+.CFlexItem {
+  display: flex;
+}
+
+.CTile {
+  margin: 8px;
+  padding: 4px;
+  flex-grow: 1; /* default 0 */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 38vw;
+  max-width: 38vw;
+  height: 20vw;
+  border: 2px solid lightgrey;
+  border-radius: 8px;
+}
+
+.CTileSelected {
+  margin: 8px;
+  flex-grow: 1; /* default 0 */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  max-width: 38vw;;
+  height: 20vw;
+  background: aliceblue;
+  border: 2px solid mediumslateblue;
+  border-radius: 8px;
+}
+
+.CTileContent {
+  min-height: 10em;
+  height: 100%;
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle
+}

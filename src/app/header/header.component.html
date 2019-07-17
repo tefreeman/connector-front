@@ -1,0 +1,23 @@
+<h2 class="text-center">Trev's Recipe Ingredient Matcher</h2>
+
+<p class="text-center">
+  You will be given a list of ingredients from a recipe. Match the recipe ingredients
+  with the closest ingredient from the ingredient database. Try to precise if possible! The cards seen are suggestions.
+  Tap the card and swipe right
+  to go to the next ingredient. After you match all the ingredients the submit button will appear. Thanks for helping
+  out!
+</p>
+<hr>
+<div style="margin-top: 32px;">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">User Id</span>
+    </div>
+    <input (input)="inputChange($event.target.value)" type="text" class="form-control" placeholder="Username"
+           aria-label="Username"
+           aria-describedby="basic-addon1">
+  </div>
+  <button style="margin-top: 32px;" (tap)=" login()
+  " class="btn btn-primary btn-lg btn-block" type="button">Login
+  </button>
+</div>

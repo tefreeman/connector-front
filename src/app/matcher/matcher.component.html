@@ -1,0 +1,37 @@
+<app-manual-selector (closeEvent)="setManualSelector($event)" *ngIf="manualSelectorStatus"></app-manual-selector>
+<div id="overlay-back" *ngIf="manualSelectorStatus">
+</div>
+<div *ngIf="!started">
+  <app-header (loginEvent)="setUserId($event)">
+  </app-header>
+</div>
+
+<div *ngIf="started">
+  <div>
+    <p style="font-size: 12px;">User: {{userId}}  | Total Recipes Matched: {{userRecipeCount}}</p>
+    <button (tap)="getRecipe()" *ngIf="currentRecipe._id === ''" type="button"
+            class="btn btn-outline-primary btn-lg btn-block">Start
+    </button>
+
+    <button (press)="submitRecipe(true)" (tap)="setErrorTextTemp()" *ngIf="currentRecipe._id !== ''" type="button"
+            class="btn btn-outline-danger" style=" position:absolute;top: 4px;right:4px;">
+      {{errorText}}
+    </button>
+    <hr style="margin-top: 24px;">
+    <div class="container" (swiperight)="swipeIfRdy(-1)" (swipeleft)="swipeIfRdy(1)">
+      <!-- Content here -->
+
+
+      <p style="margin: 8px">Recipe: {{currentRecipe.name}}</p>
+      <hr>
+      <app-ingredient-matcher (isSelected)="setSuggestionState($event)" (ready)="setIsReady($event)"
+                              (manualSelected)="setManualSelector($event)"
+                              [recipe]="currentRecipe"></app-ingredient-matcher>
+    </div>
+    <hr>
+    <div class="container">
+      <button (tap)="submitRecipe()" *ngIf="isReady" type="button" class="btn btn-primary btn-lg btn-block">Submit
+        Recipe
+      </button>
+    </div>
+  </div>
